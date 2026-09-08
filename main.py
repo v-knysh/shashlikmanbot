@@ -11,11 +11,11 @@ if settings.MODE == "split_doubles":
 
 if settings.MODE == 'webhook':
     print("running mode webhook")
-    from bot.webhook import main
+    from telegram_bot.webhook import main
     main()
 
 if settings.MODE == "poller":
     print("running mode poller")
-    import bot  # noqa: F401  -- registers message/callback handlers
-    from bot.bot import bot as tg_bot, dp
+    import telegram_bot  # noqa: F401  -- registers message/callback handlers
+    from telegram_bot.bot import bot as tg_bot, dp
     dp.run_polling(tg_bot, drop_pending_updates=True)

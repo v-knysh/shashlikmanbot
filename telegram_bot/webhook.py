@@ -10,8 +10,8 @@ from settings import (
     WEBAPP_PORT,
 )
 
-import bot  # noqa: F401  -- registers message/callback handlers
-from bot.bot import bot as tg_bot, dp
+import telegram_bot  # noqa: F401  -- registers message/callback handlers
+from telegram_bot.bot import bot as tg_bot, dp
 
 
 async def on_startup(bot):

@@ -11,7 +11,7 @@ from aiogram.exceptions import TelegramBadRequest
 
 import settings
 
-from bot.bot import dp, bot
+from telegram_bot.bot import dp, bot
 from frames.actions import ActionABC, get_action, actions
 from frames.image import PilImage
 
