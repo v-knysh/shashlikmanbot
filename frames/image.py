@@ -67,7 +67,7 @@ class PilImage(ImageABC):
         return PilImage(new_image)
     
     def distort(self, background_path, corners) -> 'ImageABC':
-        upscale_factor = 3
+        upscale_factor = 2
 
         background = Image.open(background_path)
         background = background.convert("RGBA")
