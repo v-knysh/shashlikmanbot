@@ -67,9 +67,20 @@ class PilImage(ImageABC):
         return PilImage(new_image)
     
     def distort(self, background_path, corners) -> 'ImageABC':
+        upscale_factor = 3
+
         background = Image.open(background_path)
         background = background.convert("RGBA")
+        background = background.resize(
+            (background.width * upscale_factor, background.height * upscale_factor),
+            Image.LANCZOS,
+        )
         monitor_image = self._image.convert("RGBA")
+        monitor_image = monitor_image.resize(
+            (monitor_image.width * upscale_factor, monitor_image.height * upscale_factor),
+            Image.LANCZOS,
+        )
+        corners = [(x * upscale_factor, y * upscale_factor) for x, y in corners]
 
         output = Image.new('RGBA', (background.width, background.height), (255, 255, 255, 0))
 
@@ -113,6 +124,11 @@ class PilImage(ImageABC):
         output2 = Image.new('RGBA', (background.width, background.height), (255, 255, 255, 0))
         output2.paste(background, (0, 0))
         output2.paste(output_new, (0, 0), output_new)
+
+        output2 = output2.resize(
+            (output2.width // upscale_factor, output2.height // upscale_factor),
+            Image.LANCZOS,
+        )
 
         return PilImage(output2)
 

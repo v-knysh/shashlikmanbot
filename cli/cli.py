@@ -23,7 +23,7 @@ parser.add_argument(
 parser.add_argument(
     '-m', '--multiplier',
     type=float,
-    help='percent size for porder',
+    help='percent size for border',
     default=FV_BORDER_THICKNESS_MULTIPLIER,
     dest='multiplier',
 )
